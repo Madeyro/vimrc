@@ -17,23 +17,32 @@ set t_Co=256
 
 
 " Colors
+
+" Molokai Theme
 " https://github.com/tomasr/molokai
 colorscheme molokai 
-" to have original monokai background
 let g:molokai_original = 1
-" try to utilize 256 colors
 let g:rehash256 = 1
 
+" Dracula Theme
+" colorscheme dracula
+
 " Syntax
-syntax enable 		" enable syntax processing
+syntax enable 		    " enable syntax processing
 
 " Space & Tabs
-set tabstop=4		" number of visual spaces per TAB
+set tabstop=4		    " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 
 " UI Config
-set number		" show line numbers
+set number relativenumber	" show line numbers
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
