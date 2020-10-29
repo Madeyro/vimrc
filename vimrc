@@ -1,12 +1,3 @@
-" Powerline addon
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set t_Co=256
-
 " Addons
 " auto-pairs
 "   https://github.com/jiangmiao/auto-pairs
@@ -23,6 +14,13 @@ set t_Co=256
 colorscheme molokai 
 let g:molokai_original = 1
 let g:rehash256 = 1
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 " Dracula Theme
 " colorscheme dracula
@@ -60,7 +58,7 @@ set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 " space open/closes folds
-nnoremap <space> za
+nnoremap <space> z
 set foldmethod=indent   " fold based on indent level
 
 " Movement
